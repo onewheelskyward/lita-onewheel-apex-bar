@@ -49,6 +49,7 @@ module Lita
         # reply += "Served in a #{datum[1]['glass']} glass.  "
         # reply += "#{get_display_prices datum[:prices]}, "
         # reply += "#{datum[:remaining]}"
+        reply += "#{datum[:abv]}%"
 
         Lita.logger.info "send_response: Replying with #{reply}"
 
@@ -84,25 +85,27 @@ module Lita
           # gimme_what_you_got
           tap_name = (index + 1).to_s
 
-          # brewery = beer_node.css('td')[0].children.to_s
-          beer_name = beer_node.css('td')[0].children.to_s
+          brewery = beer_node.css('td')[2].children.to_s
+          beer_name = beer_node.css('td')[0].children.text.to_s
+          beer_type = beer_name.match(/\s*-\s*\w+$/).to_s
+          beer_type.sub! /\s+-\s+/, ''
           # beer_desc = get_beer_desc(beer_node)
           abv = beer_node.css('td')[4].children.to_s
-          # full_text_search = "#{tap.sub /\d+/, ''} #{brewery} #{beer_name} #{beer_desc.to_s.gsub /\d+\.*\d*%*/, ''}"
+          full_text_search = "#{brewery} #{beer_name.to_s.gsub /(\d+|')/, ''}"  # #{beer_desc.to_s.gsub /\d+\.*\d*%*/, ''}
           # prices = get_prices(beer_node)
-
           gimme_what_you_got[tap_name] = {
           #     type: tap_type,
           #     remaining: remaining,
-          #     brewery: brewery.to_s,
+              brewery: brewery.to_s,
               name: beer_name.to_s,
-          #     desc: beer_desc.to_s,
+              desc: beer_type.to_s,
               abv: abv.to_f,
           #     prices: prices,
-          #     search: full_text_search
+              search: full_text_search
           }
         end
-        puts gimme_what_you_got.inspect
+        # puts gimme_what_you_got.inspect
+
         gimme_what_you_got
       end
 
