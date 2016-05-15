@@ -28,23 +28,23 @@ describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
 
   it 'displays details for tap 4' do
     send_command 'apex 4'
-    expect(replies.last).to eq('Apex tap 4) Blind Pig - IPA 6.1%')
+    expect(replies.last).to eq('Apex tap 4) Blind Pig - IPA 6.1%, $6')
   end
 
   it 'doesn\'t explode on 1' do
     send_command 'apex 1'
     expect(replies.count).to eq(1)
-    expect(replies.last).to eq('Apex tap 1) Aktien Helles Lager 5.3%')
+    expect(replies.last).to eq('Apex tap 1) Aktien Helles Lager 5.3%, $5')
   end
 
   it 'gets nitro' do
     send_command 'apex nitro'
-    expect(replies.last).to eq('Apex tap 30) Nitro- Stout 4.1%')
+    expect(replies.last).to eq('Apex tap 30) Nitro- Stout 4.1%, $4')
   end
 
   it 'searches for ipa' do
     send_command 'apex ipa'
-    expect(replies.last).to eq('Apex tap 50) WFO - IPA 7.5%')
+    expect(replies.last).to eq('Apex tap 50) WFO - IPA 7.5%, $5')
   end
 
   # it 'searches for brown' do
@@ -55,77 +55,69 @@ describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
   it 'searches for abv >9%' do
     send_command 'apex >9%'
     expect(replies.count).to eq(8)
-    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%')
-    expect(replies[1]).to eq('Apex tap 3) Barrel Aged Old Thunderpussy 10.8%')
-    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%')
+    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%, $5')
+    expect(replies[1]).to eq('Apex tap 3) Barrel Aged Old Thunderpussy 10.8%, $5')
+    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%, $5')
   end
 
   it 'searches for abv > 9%' do
     send_command 'apex > 9%'
     expect(replies.count).to eq(8)
-    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%')
-    expect(replies[1]).to eq('Apex tap 3) Barrel Aged Old Thunderpussy 10.8%')
-    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%')
+    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%, $5')
+    expect(replies[1]).to eq('Apex tap 3) Barrel Aged Old Thunderpussy 10.8%, $5')
+    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%, $5')
   end
 
   it 'searches for abv >= 9%' do
     send_command 'apex >= 9%'
     expect(replies.count).to eq(10)
-    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%')
-    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%')
+    expect(replies[0]).to eq('Apex tap 2) Armored Fist - Big,Black&Hoppy 10.0%, $5')
+    expect(replies.last).to eq('Apex tap 46) Sump - Imp Coffee Stout 10.5%, $5')
   end
 
   it 'searches for abv <4.1%' do
     send_command 'apex <4.1%'
     expect(replies.count).to eq(2)
-    expect(replies[0]).to eq('Apex tap 15) Grapefruit Radler 2.5%')
-    expect(replies.last).to eq('Apex tap 38) Prairie-Vous Francais - Saison   Just Tapped 3.9%')
+    expect(replies[0]).to eq('Apex tap 15) Grapefruit Radler 2.5%, $5')
+    expect(replies.last).to eq('Apex tap 38) Prairie-Vous Francais - Saison   Just Tapped 3.9%, $5')
   end
 
   it 'searches for abv <= 4%' do
     send_command 'apex <= 4%'
     expect(replies.count).to eq(2)
-    expect(replies[0]).to eq('Apex tap 15) Grapefruit Radler 2.5%')
-    expect(replies.last).to eq('Apex tap 38) Prairie-Vous Francais - Saison   Just Tapped 3.9%')
+    expect(replies[0]).to eq('Apex tap 15) Grapefruit Radler 2.5%, $5')
+    expect(replies.last).to eq('Apex tap 38) Prairie-Vous Francais - Saison   Just Tapped 3.9%, $5')
   end
 
-  it 'searches for prices >$6' do
-    send_command 'apex >$6'
-    expect(replies.count).to eq(2)
-    expect(replies[0]).to eq("Bailey's tap 1) Cider Riot! Plastic Paddy - Apple Cider w/ Irish tea 6.0%, 10oz - $4 | 20oz - $7 | 32oz Crowler - $10, 48% remaining")
-    expect(replies[1]).to eq("Bailey's tap 4) Wild Ride Solidarity - Abbey Dubbel – Barrel Aged (Pinot Noir) 8.2%, 4oz - $4 | 12oz - $7, 26% remaining")
+  it 'searches for prices >$5' do
+    send_command 'apex >$5'
+    expect(replies.count).to eq(11)
+    expect(replies[0]).to eq('Apex tap 4) Blind Pig - IPA 6.1%, $6')
+    expect(replies[1]).to eq('Apex tap 21) Kristallweissbier 5.4%, $6')
   end
 
   it 'searches for prices >=$6' do
     send_command 'apex >=$6'
-    expect(replies.count).to eq(4)
-    expect(replies[0]).to eq("Bailey's tap 1) Cider Riot! Plastic Paddy - Apple Cider w/ Irish tea 6.0%, 10oz - $4 | 20oz - $7 | 32oz Crowler - $10, 48% remaining")
-    expect(replies[1]).to eq("Bailey's tap 4) Wild Ride Solidarity - Abbey Dubbel – Barrel Aged (Pinot Noir) 8.2%, 4oz - $4 | 12oz - $7, 26% remaining")
-    expect(replies[2]).to eq("Bailey's tap 9) Hopworks Noggin’ Floggin’ - Barleywine 11.0%, 4oz - $3 | 12oz - $6 | 32oz Crowler - $13, 34% remaining")
-    expect(replies[3]).to eq("Bailey's tap 24) Oakshire Perfect Storm - Imperial IPA 9.0%, 10oz - $4 | 20oz - $6 | 32oz Crowler - $10, 61% remaining")
+    expect(replies.count).to eq(11)
+    expect(replies[0]).to eq('Apex tap 4) Blind Pig - IPA 6.1%, $6')
   end
 
   it 'searches for prices > $6' do
     send_command 'apex > $6'
-    expect(replies.count).to eq(2)
-    expect(replies[0]).to eq("Bailey's tap 1) Cider Riot! Plastic Paddy - Apple Cider w/ Irish tea 6.0%, 10oz - $4 | 20oz - $7 | 32oz Crowler - $10, 48% remaining")
-    expect(replies[1]).to eq("Bailey's tap 4) Wild Ride Solidarity - Abbey Dubbel – Barrel Aged (Pinot Noir) 8.2%, 4oz - $4 | 12oz - $7, 26% remaining")
+    expect(replies.count).to eq(3)
+    expect(replies[0]).to eq('Apex tap 29) Nitro- Shake - Choco Porter 5.9%, $8')
   end
 
   it 'searches for prices <$4.1' do
     send_command 'apex <$4.1'
-    expect(replies.count).to eq(3)
-    expect(replies[0]).to eq("Bailey's tap 8) Fat Head’s Zeus Juice - Belgian Strong Blonde 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $9, 44% remaining")
-    expect(replies[1]).to eq("Bailey's tap 18) Knee Deep Hop Surplus - Triple IPA 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 25% remaining")
-    expect(replies[2]).to eq("Bailey's tap 20) Knee Deep Dark Horse - Imperial Stout 12.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 39% remaining")
+    expect(replies.count).to eq(4)
+    expect(replies[0]).to eq('Apex tap 8) Cheap, cold 4.7%, $3')
   end
 
   it 'searches for prices < $4.01' do
     send_command 'apex < $4.01'
-    expect(replies.count).to eq(3)
-    expect(replies[0]).to eq("Bailey's tap 8) Fat Head’s Zeus Juice - Belgian Strong Blonde 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $9, 44% remaining")
-    expect(replies[1]).to eq("Bailey's tap 18) Knee Deep Hop Surplus - Triple IPA 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 25% remaining")
-    expect(replies[2]).to eq("Bailey's tap 20) Knee Deep Dark Horse - Imperial Stout 12.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 39% remaining")
+    expect(replies.count).to eq(4)
+    expect(replies[0]).to eq('Apex tap 8) Cheap, cold 4.7%, $3')
   end
 
   it 'searches for prices <= $4.00' do

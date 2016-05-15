@@ -47,9 +47,9 @@ module Lita
         reply += "#{datum[:name]} "
         # reply += "- #{datum[:desc]}, "
         # reply += "Served in a #{datum[1]['glass']} glass.  "
-        # reply += "#{get_display_prices datum[:prices]}, "
         # reply += "#{datum[:remaining]}"
-        reply += "#{datum[:abv]}%"
+        reply += "#{datum[:abv]}%, "
+        reply += "$#{datum[:price].to_s.sub '.0', ''}"
 
         Lita.logger.info "send_response: Replying with #{reply}"
 
@@ -92,7 +92,11 @@ module Lita
           # beer_desc = get_beer_desc(beer_node)
           abv = beer_node.css('td')[4].children.to_s
           full_text_search = "#{brewery} #{beer_name.to_s.gsub /(\d+|')/, ''}"  # #{beer_desc.to_s.gsub /\d+\.*\d*%*/, ''}
-          # prices = get_prices(beer_node)
+          price_node = beer_node.css('td')[1].children.to_s
+          price = (price_node.sub /\$/, '').to_f
+
+          Lita.logger.debug "Price #{price}"
+
           gimme_what_you_got[tap_name] = {
           #     type: tap_type,
           #     remaining: remaining,
@@ -100,7 +104,7 @@ module Lita
               name: beer_name.to_s,
               desc: beer_type.to_s,
               abv: abv.to_f,
-          #     prices: prices,
+              price: price,
               search: full_text_search
           }
         end
