@@ -5,7 +5,7 @@ require 'lita-onewheel-beer-base'
 
 module Lita
   module Handlers
-    class OnewheelApexBar < OnewheelBeerBase
+    class OnewheelBeerApex < OnewheelBeerBase
       route /^apex$/i,
             :taps_list,
             command: true,

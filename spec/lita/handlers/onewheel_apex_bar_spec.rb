@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
+describe Lita::Handlers::OnewheelBeerApex, lita_handler: true do
   it { is_expected.to route_command('apex') }
   it { is_expected.to route_command('apex 4') }
   it { is_expected.to route_command('apex nitro') }

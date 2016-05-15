@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'lita-onewheel-apex-bar'
-  spec.version       = '0.2.1'
+  spec.name          = 'lita-onewheel-beer-apex'
+  spec.version       = '0.2.2'
   spec.authors       = ['Andrew Kreps']
   spec.email         = ['andrew.kreps@gmail.com']
   spec.description   = %q{Lita interface to Apex Bar's listings.}
   spec.summary       = %q{See above.}
-  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-apex-bar'
+  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-beer-apex'
   spec.license       = 'MIT'
   spec.metadata      = { 'lita_plugin_type' => 'handler' }
 
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rest-client', '~> 1.8'
   spec.add_runtime_dependency 'nokogiri', '~> 1.6'
   spec.add_runtime_dependency 'sanitize', '~> 4.0'
-  spec.add_runtime_dependency 'lita-onewheel-beer-base', '~> 2'
+  spec.add_runtime_dependency 'lita-onewheel-beer-base', '>= 1'
 
   spec.add_development_dependency 'bundler', '~> 1.3'
 
