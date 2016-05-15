@@ -27,8 +27,8 @@ describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
   end
 
   it 'displays details for tap 4' do
-    send_command 'taps 4'
-    expect(replies.last).to eq('Bailey\'s tap 4) Wild Ride Solidarity - Abbey Dubbel – Barrel Aged (Pinot Noir) 8.2%, 4oz - $4 | 12oz - $7, 26% remaining')
+    send_command 'apex 4'
+    expect(replies.last).to eq('Apex tap 4) Blind Pig - IPA ')
   end
 
   it 'doesn\'t explode on 1' do

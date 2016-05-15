@@ -82,7 +82,7 @@ module Lita
         noko = Nokogiri.HTML response
         noko.css('table.table tbody tr').each_with_index do |beer_node, index|
           # gimme_what_you_got
-          tap_name = index + 1
+          tap_name = (index + 1).to_s
 
           # brewery = beer_node.css('td')[0].children.to_s
           beer_name = beer_node.css('td')[0].children.to_s
