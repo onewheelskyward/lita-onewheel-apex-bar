@@ -122,36 +122,34 @@ describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
 
   it 'searches for prices <= $4.00' do
     send_command 'apex <= $4.00'
-    expect(replies.count).to eq(3)
-    expect(replies[0]).to eq("Bailey's tap 8) Fat Head’s Zeus Juice - Belgian Strong Blonde 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $9, 44% remaining")
-    expect(replies[1]).to eq("Bailey's tap 18) Knee Deep Hop Surplus - Triple IPA 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 25% remaining")
-    expect(replies[2]).to eq("Bailey's tap 20) Knee Deep Dark Horse - Imperial Stout 12.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 39% remaining")
+    expect(replies.count).to eq(4)
+    expect(replies[0]).to eq('Apex tap 8) Cheap, cold 4.7%, $3')
   end
 
   it 'runs a random beer through' do
     send_command 'apex roulette'
     expect(replies.count).to eq(1)
-    expect(replies.last).to include("Bailey's tap")
+    expect(replies.last).to include('Apex tap')
   end
 
   it 'runs a random beer through' do
     send_command 'apex random'
     expect(replies.count).to eq(1)
-    expect(replies.last).to include("Bailey's tap")
+    expect(replies.last).to include('Apex tap')
   end
 
   it 'searches with a space' do
     send_command 'apex cider riot'
-    expect(replies.last).to eq("Bailey's tap 8) Fat Head’s Zeus Juice - Belgian Strong Blonde 10.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $9, 44% remaining")
+    expect(replies.last).to eq('Apex tap 10) Cider- NeverGiveAnInch -Rosé  6.9%, $5')
   end
 
   it 'displays low abv' do
     send_command 'apexabvhigh'
-    expect(replies.last).to eq("Bailey's tap 20) Knee Deep Dark Horse - Imperial Stout 12.0%, 4oz - $2 | 12oz - $4 | 32oz Crowler - $10, 39% remaining")
+    expect(replies.last).to eq('Apex tap 31) Notorious - IIIPA 11.5%, $5')
   end
 
   it 'displays high abv' do
     send_command 'apexabvlow'
-    expect(replies.last).to eq("Bailey's tap 3) (Cask) Machine House Crystal Maze - ESB 4.0%, 10oz - $3 | 20oz - $5, 57% remaining")
+    expect(replies.last).to eq('Apex tap 15) Grapefruit Radler 2.5%, $5')
   end
 end
