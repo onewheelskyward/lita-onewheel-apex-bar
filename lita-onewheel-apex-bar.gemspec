@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'lita-onewheel-baileys'
-  spec.version       = '3.8.3'
+  spec.name          = 'lita-onewheel-apex-bar'
+  spec.version       = '0.0.0'
   spec.authors       = ['Andrew Kreps']
   spec.email         = ['andrew.kreps@gmail.com']
-  spec.description   = %q{Lita interface to Bailey's Taproom listings.}
+  spec.description   = %q{Lita interface to Apex Bar's listings.}
   spec.summary       = %q{See above.}
-  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-baileys'
+  spec.homepage      = 'https://github.com/onewheelskyward/lita-onewheel-apex-bar'
   spec.license       = 'MIT'
   spec.metadata      = { 'lita_plugin_type' => 'handler' }
 

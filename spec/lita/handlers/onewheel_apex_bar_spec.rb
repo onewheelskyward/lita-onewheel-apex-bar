@@ -1,21 +1,20 @@
 require 'spec_helper'
 
 describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
-  # it { is_expected.to route_command('apex') }
-  # it { is_expected.to route_command('apex 4') }
+  it { is_expected.to route_command('apex') }
+  it { is_expected.to route_command('apex 4') }
   # it { is_expected.to route_command('apex nitro') }
   # it { is_expected.to route_command('apex CASK') }
-  # it { is_expected.to route_command('apex <$4') }
-  # it { is_expected.to route_command('apex < $4') }
-  # it { is_expected.to route_command('apex <=$4') }
-  # it { is_expected.to route_command('apex <= $4') }
-  # it { is_expected.to route_command('apex >4%') }
-  # it { is_expected.to route_command('apex > 4%') }
-  # it { is_expected.to route_command('apex >=4%') }
-  # it { is_expected.to route_command('apex >= 4%') }
-  # it { is_expected.to route_command('apexlow') }
-  # it { is_expected.to route_command('apexabvhigh') }
-  # it { is_expected.to route_command('apexabvlow') }
+  it { is_expected.to route_command('apex <$4') }
+  it { is_expected.to route_command('apex < $4') }
+  it { is_expected.to route_command('apex <=$4') }
+  it { is_expected.to route_command('apex <= $4') }
+  it { is_expected.to route_command('apex >4%') }
+  it { is_expected.to route_command('apex > 4%') }
+  it { is_expected.to route_command('apex >=4%') }
+  it { is_expected.to route_command('apex >= 4%') }
+  it { is_expected.to route_command('apexabvhigh') }
+  it { is_expected.to route_command('apexabvlow') }
 
   before do
     mock = File.open('spec/fixtures/apex.html').read
@@ -24,7 +23,7 @@ describe Lita::Handlers::OnewheelApexBar, lita_handler: true do
 
   it 'shows the Apex taps' do
     send_command 'apex'
-    expect(replies.last).to eq("Bailey's taps: 1) Cider Riot! Plastic Paddy  2) Fox Tail Rosenberry  3) (Cask) Machine House Crystal Maze  4) Wild Ride Solidarity  5) Mazama Gillian’s Red  6) (Nitro) Backwoods Winchester Brown  7) Fort George Vortex  8) Fat Head’s Zeus Juice  9) Hopworks Noggin’ Floggin’  10) Anderson Valley Briney Melon Gose  11) Lagunitas Copper Fusion Ale  12) Double Mountain Fast Lane  13) Burnside Couch Lager  14) Bell’s Oatmeal Stout  15) Baerlic Wildcat  16) New Belgium La Folie  17) Culmination Urizen  18) Knee Deep Hop Surplus  19) Cascade Lakes Ziggy Stardust  20) Knee Deep Dark Horse  21) Coronado Orange Avenue Wit  22) GoodLife 29er  23) Amnesia Slow Train Porter  24) Oakshire Perfect Storm  25) Green Flash Passion Fruit Kicker")
+    expect(replies.last).to eq("taps: 1)  Aktien Helles Lager  2)  Armored Fist - Big,Black&amp;Hoppy  3)  Barrel Aged Old Thunderpussy  4)  Blind Pig - IPA  5)  Blue Bell Bitter   6)  Bone-A-Fide - Pale  7)  Breaking Bud - IPA  8)  Cheap, cold  9)  Cider- Huckleberry  10)  Cider- NeverGiveAnInch -Rosé   11)  Cuvée des Jacobins Rouge*  12)  Delilah Jones '15 - StrongRye  13)  Duet - IPA  14)  Golden - Herbs,Seeds,Spelt  15)  Grapefruit Radler  16)  Handtruck - Pale  17)  Head Shake - IIPA  18)  Hop Venom - IIPA  19)  Jahrhundert - Export Lager  20)  Kalifornia Kolsch  21)  Kristallweissbier  22)  Le Terroir*  23)  Lupulin River - IPA  24)  Maisel's Weisse - Hefeweizen   25)  Nitro- Adam -Drinking Tobacco  26)  Nitro- Aphrodisiaque - Stout   27)  Nitro- Old Rasputin - RIS  28)  Nitro- Red Seal - Red  29)  Nitro- Shake - Choco Porter  30)  Nitro- Stout  31)  Notorious - IIIPA  32)  Off Leash - NW Session Ale  33)  Old Crustacean '12-Barleywine  34)  Pallet Jack - IPA  35)  Phantasmagoria - IPA  36)  Pilsner  37)  Pliny The Elder  38)  Prairie-Vous Francais - Saison  <div class=\"btn btn-danger btn-mini\">\n<i class=\"icon-star icon-white\"></i> Just Tapped<i class=\"icon-star icon-white\"></i>\n</div>  39)  Proving Ground - IPA  40)  Prowell Springs - Pilsner  41)  Saison  42)  Saison de Lily  43)  Sho' Nuff - Belgian Pale  44)  Simple Life - Lacto Saison*  45)  Stout of Circumstance  46)  Sump - Imp Coffee Stout  47)  Tex Arcana - Stout  48)  Tripel Karmeliet  49)  Vivid - IIPA  50)  WFO - IPA")
   end
 
   it 'displays details for tap 4' do
