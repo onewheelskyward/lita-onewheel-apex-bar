@@ -79,15 +79,15 @@ module Lita
 
           brewery = beer_node.css('td')[2].children.to_s
           beer_name = beer_node.css('td')[0].children.text.to_s
+
           beer_type = beer_name.match(/\s*-\s*\w+$/).to_s
           beer_type.sub! /\s+-\s+/, ''
-          # beer_desc = get_beer_desc(beer_node)
+
           abv = beer_node.css('td')[4].children.to_s
           full_text_search = "#{brewery} #{beer_name.to_s.gsub /(\d+|')/, ''}"  # #{beer_desc.to_s.gsub /\d+\.*\d*%*/, ''}
+
           price_node = beer_node.css('td')[1].children.to_s
           price = (price_node.sub /\$/, '').to_f
-
-          Lita.logger.debug "Price #{price}"
 
           gimme_what_you_got[tap_name] = {
           #     type: tap_type,
@@ -100,7 +100,6 @@ module Lita
               search: full_text_search
           }
         end
-        # puts gimme_what_you_got.inspect
 
         gimme_what_you_got
       end
