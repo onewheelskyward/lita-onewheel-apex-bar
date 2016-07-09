@@ -9,37 +9,37 @@ module Lita
       route /^apex$/i,
             :taps_list,
             command: true,
-            help: {'taps' => 'Display the current Apex Bar taps.'}
+            help: {'apex' => 'Display the current Apex Bar taps.'}
 
       route /^apex ([\w ]+)$/i,
             :taps_deets,
             command: true,
-            help: {'apex 4' => 'Display the tap 4 deets, including prices.'}
+            help: {'apex 4' => 'Display the Apex tap 4 deets, including prices.'}
 
       route /^apex ([<>=\w.\s]+)%$/i,
             :taps_by_abv,
             command: true,
-            help: {'apex >4%' => 'Display beers over 4% ABV.'}
+            help: {'apex >4%' => 'Display Apex beers over 4% ABV.'}
 
       route /^apex ([<>=\$\w.\s]+)$/i,
             :taps_by_price,
             command: true,
-            help: {'apex <$5' => 'Display beers under $5.'}
+            help: {'apex <$5' => 'Display Apex beers under $5.'}
 
       route /^apex (roulette|random|rand|ran|ra|r)$/i,
             :taps_by_random,
             command: true,
-            help: {'apex roulette' => 'Can\'t decide?  Let me do it for you!'}
+            help: {'apex roulette' => 'Can\'t decide what to drink at Apex?  Let me do it for you!'}
 
       route /^apexabvlow$/i,
             :taps_low_abv,
             command: true,
-            help: {'apexabvlow' => 'Show me the lowest abv keg.'}
+            help: {'apexabvlow' => 'Show me the lowest Apex abv keg.'}
 
       route /^apexabvhigh$/i,
             :taps_high_abv,
             command: true,
-            help: {'apexabvhigh' => 'Show me the highest abv keg.'}
+            help: {'apexabvhigh' => 'Show me the highest Apex abv keg.'}
 
       def send_response(tap, datum, response)
         reply = "Apex tap #{tap}) #{get_tap_type_text(datum[:type])}"
